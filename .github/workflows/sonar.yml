@@ -24,6 +24,8 @@ jobs:
 
       - name: SonarQube Scan
         run: |
+          set -e  # Exit on error
+          set -x  # Enable debugging
           mvn sonar:sonar \
             -Dsonar.login=${{ secrets.SONARQUBE_TOKEN }} \
             -Dsonar.host.url=http://localhost:9009/ \
