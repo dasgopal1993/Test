@@ -1,25 +1,26 @@
+name: SonarQube Scan
+ 
 on:
   push:
     branches:
-      - master
       - main
-  pull_request:
-    types: [opened, synchronize, reopened]
-
-name: SonarQube Scan
-
+ 
 jobs:
   sonarqube:
-    name: SonarQube Trigger
     runs-on: ubuntu-latest
+ 
     steps:
-    - name: Checking out
-      uses: actions/checkout@v2
-      with:
-        fetch-depth: 0
-    - name: SonarQube Scan
-      uses: kitabisa/sonarqube-action@v1.2.0
-      with:
-        host: http://localhost:9009
-        login: ${{ secrets.SONARQUBE_TOKEN }} 
-        projectKey: Test
+      - name: Checkout code
+        uses: actions/checkout@v2
+ 
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '11'
+ 
+      - name: Build and Test
+        run: mvn clean install
+ 
+      - name: SonarQube Scan
+        run: mvn sonar:sonar -Dsonar.login=sqa_e6ee38550ddd1bde24188e0893ce94c2cf4efa7b -Dsonar.host.url=http://localhost:9009/ -Dsonar.projectKey=Test -Dsonar.projectName="Test"
