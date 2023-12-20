@@ -14,17 +14,11 @@ jobs:
     name: SonarQube Trigger
     runs-on: ubuntu-latest
     steps:
-    - name: Setup Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: 16
-
     - name: Checking out
       uses: actions/checkout@v2
       with:
         # Disabling shallow clone is recommended for improving the relevancy of reporting.
         fetch-depth: 0
-
     - name: SonarQube Scan
       uses: kitabisa/sonarqube-action@v1.2.0
       with:
