@@ -19,9 +19,6 @@ jobs:
           distribution: 'adopt'
           java-version: '11'
 
-      - name: Build and Test
-        run: mvn clean install
-
       - name: SonarQube Scan
         run: |
           set -e  # Exit on error
