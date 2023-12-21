@@ -11,6 +11,7 @@ public class FactorialCalculatorTest {
 	public void testCalculateFactorial() {
 		// Test case for calculating the factorial of 5
 		int result = FactorialCalculator.calculateFactorial(5);
+		String test;
 
 		// The expected result is 5! = 120
 		assertEquals(120, result);
