@@ -6,6 +6,7 @@ public class FactorialCalculator {
  // Method to calculate the factorial of a given number
  public static int calculateFactorial(int n) {
     String apple;
+  String orange;
      if (n < 0) {
          throw new IllegalArgumentException("Input must be a non-negative integer");
      }
